@@ -1,22 +1,22 @@
 // ============================================
-// KAUSHAL LADIYA - PORTFOLIO JAVASCRIPT
-// Smooth animations, interactions, and effects
+// KAUSHAL LADIYA PORTFOLIO
+// Version A - Professional & Recruiter-Optimized
 // ============================================
 
 // ============================================
-// 1. MOBILE NAVIGATION TOGGLE
+// MOBILE NAVIGATION
 // ============================================
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
-// Toggle mobile menu
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+}
 
-// Close mobile menu when clicking on a nav link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -25,14 +25,28 @@ navLinks.forEach(link => {
 });
 
 // ============================================
-// 2. SMOOTH SCROLLING FOR NAVIGATION LINKS
+// AVAILABILITY BADGE SHOW ON SCROLL
 // ============================================
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+const availabilityBadge = document.getElementById('availabilityBadge');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        availabilityBadge.classList.add('show');
+    } else {
+        availabilityBadge.classList.remove('show');
+    }
+});
+
+// ============================================
+// SMOOTH SCROLLING
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
         
+        const targetSection = document.querySelector(targetId);
         if (targetSection) {
             const navHeight = document.querySelector('.navbar').offsetHeight;
             const targetPosition = targetSection.offsetTop - navHeight;
@@ -46,26 +60,29 @@ navLinks.forEach(link => {
 });
 
 // ============================================
-// 3. NAVBAR BACKGROUND ON SCROLL
+// NAVBAR SCROLL EFFECT
 // ============================================
 const navbar = document.querySelector('.navbar');
+let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(15, 23, 42, 0.98)';
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
     } else {
-        navbar.style.background = 'rgba(15, 23, 42, 0.95)';
         navbar.style.boxShadow = 'none';
     }
+    
+    lastScroll = currentScroll;
 });
 
 // ============================================
-// 4. ACTIVE NAVIGATION LINK ON SCROLL
+// ACTIVE SECTION HIGHLIGHTING
 // ============================================
 const sections = document.querySelectorAll('section[id]');
 
-function setActiveNavLink() {
+function highlightNavigation() {
     const scrollY = window.pageYOffset;
     
     sections.forEach(section => {
@@ -75,56 +92,61 @@ function setActiveNavLink() {
         
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             navLinks.forEach(link => {
-                link.classList.remove('active');
+                link.style.color = '';
                 if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
+                    link.style.color = 'var(--accent)';
                 }
             });
         }
     });
 }
 
-window.addEventListener('scroll', setActiveNavLink);
+window.addEventListener('scroll', highlightNavigation);
 
 // ============================================
-// 5. SCROLL REVEAL ANIMATIONS
+// SCROLL REVEAL ANIMATIONS
 // ============================================
-const observerOptions = {
+const revealOptions = {
     threshold: 0.15,
     rootMargin: '0px 0px -100px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
         }
     });
-}, observerOptions);
+}, revealOptions);
 
-// Elements to animate on scroll
-const animateOnScroll = document.querySelectorAll(
-    '.about-content, .skill-category, .project-card, .contact-content, .stat-item'
-);
+const elementsToReveal = document.querySelectorAll(`
+    .about-text,
+    .highlight-item,
+    .platform-card,
+    .skills-category,
+    .project-card,
+    .contact-info,
+    .contact-form
+`);
 
-animateOnScroll.forEach(el => {
+elementsToReveal.forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
+    revealObserver.observe(el);
 });
 
 // ============================================
-// 6. TYPING ANIMATION FOR HERO SUBTITLE
+// TYPING ANIMATION
 // ============================================
-const heroSubtitle = document.querySelector('.hero-subtitle');
+const subtitle = document.querySelector('.hero-subtitle');
 const roles = [
     'Full Stack Developer',
-    'React Developer',
+    '.NET Specialist',
     'Java Developer',
-    '.NET Developer',
-    'Problem Solver'
+    'Backend Architect',
+    'React Developer'
 ];
 
 let roleIndex = 0;
@@ -132,21 +154,20 @@ let charIndex = 0;
 let isDeleting = false;
 let typingSpeed = 100;
 
-function typeEffect() {
+function typeRole() {
     const currentRole = roles[roleIndex];
     
     if (isDeleting) {
-        heroSubtitle.textContent = currentRole.substring(0, charIndex - 1);
+        subtitle.textContent = currentRole.substring(0, charIndex - 1);
         charIndex--;
         typingSpeed = 50;
     } else {
-        heroSubtitle.textContent = currentRole.substring(0, charIndex + 1);
+        subtitle.textContent = currentRole.substring(0, charIndex + 1);
         charIndex++;
         typingSpeed = 100;
     }
     
     if (!isDeleting && charIndex === currentRole.length) {
-        // Pause at end
         typingSpeed = 2000;
         isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
@@ -155,93 +176,43 @@ function typeEffect() {
         typingSpeed = 500;
     }
     
-    setTimeout(typeEffect, typingSpeed);
+    setTimeout(typeRole, typingSpeed);
 }
 
-// Start typing effect after page loads
 window.addEventListener('load', () => {
-    setTimeout(typeEffect, 1000);
+    setTimeout(typeRole, 1000);
 });
 
 // ============================================
-// 7. ANIMATED COUNTER FOR STATS
+// PROJECT CARD INTERACTIONS
 // ============================================
-const statNumbers = document.querySelectorAll('.stat-number');
-let hasAnimated = false;
+const projectCards = document.querySelectorAll('.project-card');
 
-function animateCounters() {
-    if (hasAnimated) return;
-    
-    statNumbers.forEach(stat => {
-        const target = parseInt(stat.textContent);
-        const duration = 2000; // 2 seconds
-        const increment = target / (duration / 16); // 60fps
-        let current = 0;
-        
-        const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-                stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '') + (stat.textContent.includes('%') ? '%' : '');
-                requestAnimationFrame(updateCounter);
-            } else {
-                stat.textContent = target + (stat.textContent.includes('+') ? '+' : '') + (stat.textContent.includes('%') ? '%' : '');
-            }
-        };
-        
-        updateCounter();
+projectCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px)';
     });
     
-    hasAnimated = true;
-}
-
-// Trigger counter animation when stats section is visible
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounters();
-        }
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
     });
-}, { threshold: 0.5 });
-
-const statsSection = document.querySelector('.about-stats');
-if (statsSection) {
-    statsObserver.observe(statsSection);
-}
-
-// ============================================
-// 8. CONTACT FORM HANDLING
-// ============================================
-const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
-    };
-    
-    // Show success message (in real app, this would send to backend)
-    showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-    
-    // Reset form
-    contactForm.reset();
-    
-    // In a real application, you would send this data to your backend:
-    // fetch('/api/contact', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(formData)
-    // });
 });
 
 // ============================================
-// 9. NOTIFICATION SYSTEM
+// CONTACT FORM - SUCCESS MESSAGE HANDLING
+// ============================================
+// Check if redirected from FormSubmit
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('success') === 'true') {
+    showNotification('Message sent successfully! I\'ll get back to you within 24 hours.', 'success');
+    // Clean URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+}
+
+// ============================================
+// NOTIFICATION SYSTEM
 // ============================================
 function showNotification(message, type = 'success') {
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.innerHTML = `
@@ -249,39 +220,36 @@ function showNotification(message, type = 'success') {
         <span>${message}</span>
     `;
     
-    // Add styles
     notification.style.cssText = `
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'success' ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'linear-gradient(135deg, #f5576c 0%, #f093fb 100%)'};
-        color: white;
+        background: ${type === 'success' ? 'linear-gradient(135deg, #00D9FF 0%, #64FFDA 100%)' : 'linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)'};
+        color: ${type === 'success' ? '#0A192F' : '#fff'};
         padding: 1rem 1.5rem;
-        border-radius: 0.5rem;
+        border-radius: 8px;
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         z-index: 9999;
         animation: slideInRight 0.5s ease;
         font-size: 1rem;
+        font-weight: 600;
+        max-width: 400px;
     `;
     
-    // Add to page
     document.body.appendChild(notification);
     
-    // Remove after 4 seconds
     setTimeout(() => {
         notification.style.animation = 'slideOutRight 0.5s ease';
-        setTimeout(() => {
-            notification.remove();
-        }, 500);
-    }, 4000);
+        setTimeout(() => notification.remove(), 500);
+    }, 5000);
 }
 
-// Add notification animations to page
-const style = document.createElement('style');
-style.textContent = `
+// Animation styles
+const notificationStyle = document.createElement('style');
+notificationStyle.textContent = `
     @keyframes slideInRight {
         from {
             transform: translateX(400px);
@@ -304,105 +272,130 @@ style.textContent = `
         }
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(notificationStyle);
 
 // ============================================
-// 10. CURSOR TRAIL EFFECT (Optional - Subtle)
+// PARALLAX SCROLL EFFECT (SUBTLE)
 // ============================================
-let mouseX = 0;
-let mouseY = 0;
-let cursorX = 0;
-let cursorY = 0;
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    
+    if (hero && scrolled < window.innerHeight) {
+        hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+        hero.style.opacity = 1 - (scrolled / 800);
+    }
 });
 
-// Create cursor follower
-const cursorFollower = document.createElement('div');
-cursorFollower.style.cssText = `
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgba(102, 126, 234, 0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.2s ease;
-    display: none;
-`;
-document.body.appendChild(cursorFollower);
-
-// Show cursor follower on desktop only
+// ============================================
+// CURSOR FOLLOWER (DESKTOP ONLY)
+// ============================================
 if (window.innerWidth > 768) {
-    cursorFollower.style.display = 'block';
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+    
+    const cursor = document.createElement('div');
+    cursor.style.cssText = `
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.5;
+        transition: transform 0.2s ease;
+    `;
+    document.body.appendChild(cursor);
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
     
     function animateCursor() {
         cursorX += (mouseX - cursorX) * 0.1;
         cursorY += (mouseY - cursorY) * 0.1;
         
-        cursorFollower.style.left = cursorX - 10 + 'px';
-        cursorFollower.style.top = cursorY - 10 + 'px';
+        cursor.style.left = cursorX - 10 + 'px';
+        cursor.style.top = cursorY - 10 + 'px';
         
         requestAnimationFrame(animateCursor);
     }
     
     animateCursor();
+    
+    // Cursor hover effects
+    const interactiveElements = document.querySelectorAll('a, button, .project-card, .platform-card');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'scale(1.5)';
+            cursor.style.borderColor = 'var(--accent-light)';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'scale(1)';
+            cursor.style.borderColor = 'var(--accent)';
+        });
+    });
 }
 
 // ============================================
-// 11. PROJECT CARD HOVER EFFECTS
+// LAZY LOADING OPTIMIZATION
 // ============================================
-const projectCards = document.querySelectorAll('.project-card');
-
-projectCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-10px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// ============================================
-// 12. PERFORMANCE OPTIMIZATION - LAZY LOADING
-// ============================================
-// Lazy load images
-const images = document.querySelectorAll('img[src]');
+const images = document.querySelectorAll('img[data-src]');
 const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const img = entry.target;
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.5s ease';
-            
-            img.onload = () => {
-                img.style.opacity = '1';
-            };
-            
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
             imageObserver.unobserve(img);
         }
     });
 });
 
-images.forEach(img => {
-    imageObserver.observe(img);
+images.forEach(img => imageObserver.observe(img));
+
+// ============================================
+// PERFORMANCE MONITORING
+// ============================================
+window.addEventListener('load', () => {
+    const loadTime = window.performance.timing.domContentLoadedEventEnd - 
+                     window.performance.timing.navigationStart;
+    
+    console.log('%c🚀 Portfolio Loaded', 'font-size: 16px; color: #00D9FF; font-weight: bold;');
+    console.log(`%c⚡ Load Time: ${loadTime}ms`, 'font-size: 12px; color: #64FFDA;');
+    console.log('%c👨‍💻 Built by Kaushal Ladiya', 'font-size: 12px; color: #8892B0;');
+    console.log('%c📧 kaushalladiya@gmail.com', 'font-size: 12px; color: #8892B0;');
+    console.log('%c💼 Currently Available for Opportunities', 'font-size: 12px; color: #00D9FF;');
 });
 
 // ============================================
-// 13. CONSOLE MESSAGE (Easter Egg)
+// KEYBOARD NAVIGATION
 // ============================================
-console.log('%c👋 Hello Developer!', 'font-size: 20px; color: #667eea; font-weight: bold;');
-console.log('%cThanks for checking out the code!', 'font-size: 14px; color: #764ba2;');
-console.log('%cBuilt with ❤️ by Kaushal Ladiya', 'font-size: 12px; color: #f093fb;');
-console.log('%cInterested in collaborating? Let\'s connect!', 'font-size: 12px; color: #a0aec0;');
+document.addEventListener('keydown', (e) => {
+    // ESC key closes mobile menu
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
 
 // ============================================
-// INITIALIZATION MESSAGE
+// COPY EMAIL ON CLICK
 // ============================================
-window.addEventListener('load', () => {
-    console.log('✅ Portfolio loaded successfully!');
-    console.log('🚀 All animations and interactions are ready!');
+const emailElements = document.querySelectorAll('a[href^="mailto:"]');
+emailElements.forEach(el => {
+    el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const email = el.href.replace('mailto:', '');
+        navigator.clipboard.writeText(email).then(() => {
+            showNotification('Email copied to clipboard!', 'success');
+        }).catch(() => {
+            // Fallback: open mailto link
+            window.location.href = el.href;
+        });
+    });
 });
