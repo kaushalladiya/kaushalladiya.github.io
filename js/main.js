@@ -1,9 +1,4 @@
 // ============================================
-// KAUSHAL LADIYA PORTFOLIO
-// Version A - Professional & Recruiter-Optimized
-// ============================================
-
-// ============================================
 // MOBILE NAVIGATION
 // ============================================
 const hamburger = document.querySelector('.hamburger');
