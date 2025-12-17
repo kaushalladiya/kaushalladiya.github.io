@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kaushal Ladiya - Full Stack Developer specializing in .NET, Java, and React. Building scalable backend systems and modern web applications.">
-    <meta name="keywords" content="Full Stack Developer, .NET Developer, Java Developer, React, Web Development, Backend Development">
+    <meta name="description" content="Kaushal Ladiya - Full Stack Developer specializing in .NET, Java, and React. Available immediately for full-time opportunities. Building scalable backend systems and modern web applications.">
+    <meta name="keywords" content="Full Stack Developer, .NET Developer, Java Developer, React, Web Development, Backend Development, Hire Developer">
     <meta name="author" content="Kaushal Ladiya">
-    <title>Kaushal Ladiya | Full Stack Developer</title>
+    <title>Kaushal Ladiya | Full Stack Developer - Available Now</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -23,11 +23,15 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#coding" class="nav-link">Coding</a></li>
+                <li><a href="#coding" class="nav-link">Problem Solving</a></li>
                 <li><a href="#skills" class="nav-link">Tech Stack</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#contact" class="nav-link">Hire Me</a></li>
             </ul>
+            <!-- Theme Toggle Button -->
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+                <i class="fas fa-sun" id="themeIcon"></i>
+            </button>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -38,7 +42,7 @@
 
     <!-- Availability Badge -->
     <div class="availability-badge" id="availabilityBadge">
-        <i class="fas fa-circle pulse"></i>
+        <i class="fas fa-briefcase"></i>
         <span>Available for Opportunities</span>
     </div>
 
@@ -46,37 +50,40 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <p class="hero-greeting">Hello World, I'm</p>
+                <p class="hero-greeting">Hey there, I'm</p>
                 <h1 class="hero-title">KAUSHAL LADIYA</h1>
                 <h2 class="hero-subtitle">Full Stack Developer</h2>
                 <p class="hero-description">
-                    Building robust backend systems and elegant user interfaces. 
-                    Currently mastering full-stack development at CDAC with a focus on .NET and Java technologies.
+                    I architect robust backend systems and craft intuitive user interfaces. 
+                    Specialized in .NET and Java technologies with hands-on experience building production-ready applications.
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">
-                        <span>Explore My Work</span>
-                        <i class="fas fa-arrow-down"></i>
+                        <span>See What I Build</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                     <a href="#contact" class="btn btn-secondary">
-                        <span>Let's Connect</span>
-                        <i class="fas fa-paper-plane"></i>
+                        <span>Let's Discuss Your Project</span>
+                        <i class="fas fa-handshake"></i>
                     </a>
                 </div>
                 <div class="social-links">
-                    <a href="https://github.com/kaushalladiya" target="_blank" aria-label="GitHub" title="GitHub">
+                    <a href="https://github.com/kaushalladiya" target="_blank" aria-label="GitHub" title="GitHub Profile">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/kaushalladiya/" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+                    <a href="https://www.linkedin.com/in/kaushalladiya/" target="_blank" aria-label="LinkedIn" title="LinkedIn Profile">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://leetcode.com/kaushalladiya/" target="_blank" aria-label="LeetCode" title="LeetCode">
+                    <a href="https://leetcode.com/kaushalladiya/" target="_blank" aria-label="LeetCode" title="LeetCode Profile">
                         <i class="fas fa-code"></i>
                     </a>
-                    <a href="https://auth.geeksforgeeks.org/user/kaushalladiya" target="_blank" aria-label="GeeksForGeeks" title="GeeksForGeeks">
+                    <a href="https://www.hackerrank.com/profile/kaushalladiya" target="_blank" aria-label="HackerRank" title="HackerRank Profile">
+                        <i class="fab fa-hackerrank"></i>
+                    </a>
+                    <a href="https://auth.geeksforgeeks.org/user/kaushalladiya" target="_blank" aria-label="GeeksForGeeks" title="GeeksForGeeks Profile">
                         <i class="fas fa-laptop-code"></i>
                     </a>
-                    <a href="mailto:kaushalladiya@gmail.com" aria-label="Email" title="Email">
+                    <a href="mailto:kaushalladiya@gmail.com" aria-label="Email" title="Send Email">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
@@ -91,24 +98,23 @@
     <!-- About Section -->
     <section id="about" class="about section">
         <div class="container">
-            <h2 class="section-title">Who Am I?</h2>
+            <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-main">
                     <div class="about-text">
                         <p class="lead-text">
-                            I started coding because I wanted to build things that solve real problems. 
-                            Java and .NET clicked with me—there's something satisfying about architecting 
-                            backend systems that just work.
+                            I build things that solve real problems. Java and .NET are my core strengths—I'm comfortable 
+                            architecting backend systems that handle complexity with elegance.
                         </p>
                         <p>
-                            I'm currently sharpening my full-stack skills through CDAC, diving deep into 
-                            enterprise-level application development. My approach is simple: write clean code, 
-                            solve complex problems, and never stop learning.
+                            Currently advancing my expertise through CDAC's intensive program in Bhopal, focusing on 
+                            enterprise-level application development. My approach: write maintainable code, architect 
+                            scalable solutions, and deliver results that matter.
                         </p>
                         <p>
-                            Give me a challenging backend architecture or a data flow problem, and I'm in my element. 
-                            I believe great software is built on strong foundations—solid backend logic paired with 
-                            intuitive frontend experiences.
+                            Give me a complex backend challenge or a performance bottleneck, and I'll find the solution. 
+                            I believe exceptional software starts with solid foundations—robust backend architecture 
+                            paired with seamless user experiences.
                         </p>
                     </div>
                     <div class="about-highlights">
@@ -117,8 +123,8 @@
                                 <i class="fas fa-code"></i>
                             </div>
                             <div class="highlight-content">
-                                <h3>Backend Focused</h3>
-                                <p>Specialized in .NET and Java for building scalable server-side applications</p>
+                                <h3>Backend Specialist</h3>
+                                <p>Expert in .NET and Java for building enterprise-grade server applications with clean architecture</p>
                             </div>
                         </div>
                         <div class="highlight-item">
@@ -126,8 +132,8 @@
                                 <i class="fas fa-laptop-code"></i>
                             </div>
                             <div class="highlight-content">
-                                <h3>Full Stack Capable</h3>
-                                <p>Proficient in React for creating modern, responsive user interfaces</p>
+                                <h3>Full Stack Ready</h3>
+                                <p>Skilled in React and modern frontend frameworks for complete end-to-end development</p>
                             </div>
                         </div>
                         <div class="highlight-item">
@@ -135,8 +141,8 @@
                                 <i class="fas fa-graduation-cap"></i>
                             </div>
                             <div class="highlight-content">
-                                <h3>Continuous Learner</h3>
-                                <p>Currently advancing skills through CDAC's intensive program in Bhopal</p>
+                                <h3>CDAC Trained</h3>
+                                <p>Completing intensive full-stack program in Bhopal, mastering industry best practices</p>
                             </div>
                         </div>
                     </div>
@@ -149,7 +155,7 @@
     <section id="coding" class="coding section">
         <div class="container">
             <h2 class="section-title">Problem Solving Practice</h2>
-            <p class="section-subtitle">Consistently practicing algorithms and data structures</p>
+            <p class="section-subtitle">Active on multiple platforms, sharpening algorithms and data structures daily</p>
             <div class="coding-platforms">
                 <a href="https://leetcode.com/kaushalladiya/" target="_blank" class="platform-card leetcode">
                     <div class="platform-header">
@@ -158,13 +164,30 @@
                     </div>
                     <div class="platform-stats">
                         <div class="stat">
-                            <span class="stat-label">Problems Solved</span>
-                            <span class="stat-value">Check Profile →</span>
+                            <span class="stat-label">Active Problem Solver</span>
+                            <span class="stat-value">Check Stats →</span>
                         </div>
                     </div>
-                    <p class="platform-description">Actively solving DSA problems to strengthen algorithmic thinking</p>
+                    <p class="platform-description">Solving DSA problems consistently to strengthen algorithmic thinking and coding efficiency</p>
                     <span class="platform-link">
-                        View Profile <i class="fas fa-external-link-alt"></i>
+                        See My DSA Skills <i class="fas fa-external-link-alt"></i>
+                    </span>
+                </a>
+
+                <a href="https://www.hackerrank.com/profile/kaushalladiya" target="_blank" class="platform-card hackerrank">
+                    <div class="platform-header">
+                        <i class="fab fa-hackerrank"></i>
+                        <h3>HackerRank</h3>
+                    </div>
+                    <div class="platform-stats">
+                        <div class="stat">
+                            <span class="stat-label">Skills Validated</span>
+                            <span class="stat-value">View Badges →</span>
+                        </div>
+                    </div>
+                    <p class="platform-description">Earning certifications and completing challenges across multiple programming domains</p>
+                    <span class="platform-link">
+                        Check My Progress <i class="fas fa-external-link-alt"></i>
                     </span>
                 </a>
 
@@ -175,18 +198,18 @@
                     </div>
                     <div class="platform-stats">
                         <div class="stat">
-                            <span class="stat-label">Practice</span>
-                            <span class="stat-value">Check Profile →</span>
+                            <span class="stat-label">Continuous Learning</span>
+                            <span class="stat-value">View Activity →</span>
                         </div>
                     </div>
-                    <p class="platform-description">Learning advanced concepts and solving practice problems</p>
+                    <p class="platform-description">Practicing advanced concepts and solving real-world programming challenges</p>
                     <span class="platform-link">
-                        View Profile <i class="fas fa-external-link-alt"></i>
+                        See Problem-Solving <i class="fas fa-external-link-alt"></i>
                     </span>
                 </a>
             </div>
             <div class="coding-focus">
-                <h3>Focus Areas</h3>
+                <h3>Core Competencies</h3>
                 <div class="focus-tags">
                     <span class="focus-tag">Data Structures</span>
                     <span class="focus-tag">Algorithms</span>
@@ -194,6 +217,7 @@
                     <span class="focus-tag">Problem Solving</span>
                     <span class="focus-tag">Java</span>
                     <span class="focus-tag">.NET</span>
+                    <span class="focus-tag">SQL Optimization</span>
                 </div>
             </div>
         </div>
@@ -203,6 +227,7 @@
     <section id="skills" class="skills section">
         <div class="container">
             <h2 class="section-title">Technology Stack</h2>
+            <p class="section-subtitle">Production-ready skills across the full development spectrum</p>
             <div class="skills-container">
                 <div class="skills-category">
                     <div class="category-header">
@@ -285,30 +310,31 @@
     <!-- Projects Section -->
     <section id="projects" class="projects section">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title">Featured Work</h2>
+            <p class="section-subtitle">Production-ready applications built with modern tech stacks</p>
             <div class="projects-grid">
                 <!-- Finance Tracker Project -->
                 <div class="project-card featured">
-                    <div class="project-badge">Featured Project</div>
+                    <div class="project-badge">Live Project</div>
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-chart-line"></i>
                         </div>
                         <div class="project-title-group">
                             <h3>Finance Tracker</h3>
-                            <p class="project-subtitle">Full-Stack Web Application</p>
+                            <p class="project-subtitle">Full-Stack Financial Management System</p>
                         </div>
                     </div>
                     <p class="project-description">
-                        A comprehensive personal finance management system built with .NET 10 and React. 
-                        Features real-time transaction tracking, categorized expense monitoring, and 
-                        dynamic financial summaries with an intuitive dashboard interface.
+                        Enterprise-grade personal finance management system with .NET 10 backend and React frontend. 
+                        Features real-time transaction processing, intelligent categorization, and dynamic financial 
+                        analytics with responsive dashboard interface.
                     </p>
                     <div class="project-features">
                         <span><i class="fas fa-check"></i> RESTful API Architecture</span>
-                        <span><i class="fas fa-check"></i> Entity Framework Core</span>
-                        <span><i class="fas fa-check"></i> Real-time Data Sync</span>
-                        <span><i class="fas fa-check"></i> Responsive UI/UX</span>
+                        <span><i class="fas fa-check"></i> Entity Framework Core ORM</span>
+                        <span><i class="fas fa-check"></i> Real-time Data Synchronization</span>
+                        <span><i class="fas fa-check"></i> Mobile-Responsive Design</span>
                     </div>
                     <div class="project-tech">
                         <span class="tech-badge dotnet">.NET 10</span>
@@ -319,11 +345,11 @@
                     <div class="project-links">
                         <a href="https://github.com/kaushalladiya/finance-tracker" target="_blank" class="project-link-btn">
                             <i class="fab fa-github"></i>
-                            <span>Explore Codebase</span>
+                            <span>Review Architecture</span>
                         </a>
                         <a href="https://github.com/kaushalladiya/finance-tracker#readme" target="_blank" class="project-link-btn secondary">
                             <i class="fas fa-book"></i>
-                            <span>Read Documentation</span>
+                            <span>Technical Docs</span>
                         </a>
                     </div>
                 </div>
@@ -336,12 +362,12 @@
                         </div>
                         <div class="project-title-group">
                             <h3>E-Commerce Platform</h3>
-                            <p class="project-subtitle">In Development</p>
+                            <p class="project-subtitle">In Active Development</p>
                         </div>
                     </div>
                     <p class="project-description">
-                        Building a full-featured e-commerce solution with product management, 
-                        user authentication, and payment integration using Java Spring Boot.
+                        Full-featured e-commerce solution with advanced product management, 
+                        secure authentication, and integrated payment processing using Java Spring Boot ecosystem.
                     </p>
                     <div class="project-tech">
                         <span class="tech-badge java">Java</span>
@@ -351,7 +377,7 @@
                     </div>
                     <div class="project-status">
                         <i class="fas fa-clock"></i>
-                        <span>Coming Soon</span>
+                        <span>Launching Soon</span>
                     </div>
                 </div>
 
@@ -362,12 +388,12 @@
                         </div>
                         <div class="project-title-group">
                             <h3>Task Management System</h3>
-                            <p class="project-subtitle">In Planning</p>
+                            <p class="project-subtitle">Planning Phase</p>
                         </div>
                     </div>
                     <p class="project-description">
-                        Collaborative project management tool with real-time updates and team coordination 
-                        features, built with ASP.NET Core and SignalR.
+                        Collaborative project management platform with real-time updates, team coordination 
+                        features, and advanced reporting built with ASP.NET Core and SignalR.
                     </p>
                     <div class="project-tech">
                         <span class="tech-badge dotnet">.NET</span>
@@ -376,7 +402,7 @@
                     </div>
                     <div class="project-status">
                         <i class="fas fa-clipboard-list"></i>
-                        <span>In Planning</span>
+                        <span>In Pipeline</span>
                     </div>
                 </div>
             </div>
@@ -386,19 +412,19 @@
     <!-- Contact Section -->
     <section id="contact" class="contact section">
         <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <p class="section-subtitle">Currently open to full-stack development opportunities</p>
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="section-subtitle">Available immediately for full-time opportunities | Response within 24 hours</p>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Get In Touch</h3>
+                    <h3>Ready to Contribute</h3>
                     <p>
-                        I'm always open to discussing new opportunities, interesting projects, or 
-                        just connecting with fellow developers. Whether you have a question or 
-                        want to collaborate, feel free to reach out.
+                        I'm actively seeking full-time opportunities where I can contribute from day one. 
+                        Whether you're building something new or scaling existing systems, let's discuss 
+                        how I can add value to your team.
                     </p>
                     <div class="response-guarantee">
-                        <i class="fas fa-clock"></i>
-                        <span>You'll get a response within 24 hours</span>
+                        <i class="fas fa-bolt"></i>
+                        <span>Quick Response Guaranteed - Usually within 24 hours</span>
                     </div>
                     <div class="contact-methods">
                         <a href="mailto:kaushalladiya@gmail.com" class="contact-method">
@@ -406,7 +432,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="method-info">
-                                <h4>Email</h4>
+                                <h4>Email (Preferred)</h4>
                                 <p>kaushalladiya@gmail.com</p>
                             </div>
                         </a>
@@ -440,32 +466,43 @@
                     </div>
                 </div>
                 <form class="contact-form" id="contactForm" action="https://formsubmit.co/kaushalladiya@gmail.com" method="POST">
-                    <h3>Start a Conversation</h3>
-                    <input type="hidden" name="_subject" value="New Portfolio Contact!">
+                    <h3>Send a Message</h3>
+                    <p class="form-note">
+                        <i class="fas fa-info-circle"></i>
+                        If form doesn't work, email me directly at kaushalladiya@gmail.com
+                    </p>
+                    <input type="hidden" name="_subject" value="New Opportunity from Portfolio!">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_next" value="https://kaushalladiya.github.io/?success=true">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Your Name</label>
+                            <label for="name">Your Name *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Your Email</label>
+                            <label for="email">Your Email *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="subject">Subject</label>
+                        <label for="company">Company / Organization</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
                         <input type="text" id="subject" name="subject" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
+                        <label for="message">Message *</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary btn-full">
                         <span>Send Message</span>
                         <i class="fas fa-paper-plane"></i>
                     </button>
+                    <div class="direct-email-cta">
+                        <p>Prefer email? <a href="mailto:kaushalladiya@gmail.com">Click here to email directly</a></p>
+                    </div>
                 </form>
             </div>
         </div>
@@ -476,7 +513,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-text">
-                    <p>&copy; 2024 Kaushal Ladiya. Crafted with precision and passion.</p>
+                    <p>&copy; 2025 Kaushal Ladiya. Built with expertise and attention to detail.</p>
                 </div>
                 <div class="footer-links">
                     <a href="https://github.com/kaushalladiya" target="_blank" title="GitHub">
@@ -487,6 +524,9 @@
                     </a>
                     <a href="https://leetcode.com/kaushalladiya/" target="_blank" title="LeetCode">
                         <i class="fas fa-code"></i>
+                    </a>
+                    <a href="https://www.hackerrank.com/profile/kaushalladiya" target="_blank" title="HackerRank">
+                        <i class="fab fa-hackerrank"></i>
                     </a>
                     <a href="https://auth.geeksforgeeks.org/user/kaushalladiya" target="_blank" title="GeeksForGeeks">
                         <i class="fas fa-laptop-code"></i>

@@ -143,10 +143,9 @@ elementsToReveal.forEach(el => {
 const subtitle = document.querySelector('.hero-subtitle');
 const roles = [
     'Full Stack Developer',
-    '.NET Specialist',
+    '.NET Developer',
     'Java Developer',
-    'Backend Architect',
-    'React Developer'
+    'Backend Architect'
 ];
 
 let roleIndex = 0;
