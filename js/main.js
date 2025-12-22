@@ -12,12 +12,22 @@ if (hamburger) {
     });
 }
 
+// Close menu when a standard link is clicked
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
     });
 });
+
+// Close menu when the Hire Me button is clicked
+const navBtn = document.querySelector('.nav-btn');
+if (navBtn) {
+    navBtn.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+}
 
 // ============================================
 // AVAILABILITY BADGE SHOW ON SCROLL
@@ -39,7 +49,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+        
+        // IMPORTANT: Don't process if it's just "#" or if element doesn't exist
+        if (targetId === '#' || targetId.length <= 1) {
+            return;
+        }
         
         const targetSection = document.querySelector(targetId);
         if (targetSection) {
@@ -58,7 +72,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // NAVBAR SCROLL EFFECT
 // ============================================
 const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
@@ -68,8 +81,6 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.style.boxShadow = 'none';
     }
-    
-    lastScroll = currentScroll;
 });
 
 // ============================================
@@ -111,13 +122,16 @@ const revealObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            revealObserver.unobserve(entry.target); // Stop observing once revealed
         }
     });
 }, revealOptions);
 
+// Reveal elements list
 const elementsToReveal = document.querySelectorAll(`
     .about-text,
     .highlight-item,
+    .timeline-item, 
     .platform-card,
     .skills-category,
     .project-card,
@@ -193,13 +207,46 @@ projectCards.forEach(card => {
 });
 
 // ============================================
-// CONTACT FORM - SUCCESS MESSAGE HANDLING
+// PROJECT FILTERING (V3)
 // ============================================
-// Check if redirected from FormSubmit
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectItems = document.querySelectorAll('.project-card');
+
+if (filterButtons.length > 0) {
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all
+            filterButtons.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked
+            btn.classList.add('active');
+            
+            const filterValue = btn.getAttribute('data-filter');
+            
+            projectItems.forEach(card => {
+                const categories = card.getAttribute('data-category');
+                
+                if (filterValue === 'all' || categories.includes(filterValue)) {
+                    card.style.display = 'flex';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    card.style.display = 'none';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                }
+            });
+        });
+    });
+}
+
+// ============================================
+// CONTACT FORM - SUCCESS MESSAGE
+// ============================================
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get('success') === 'true') {
     showNotification('Message sent successfully! I\'ll get back to you within 24 hours.', 'success');
-    // Clean URL
     window.history.replaceState({}, document.title, window.location.pathname);
 }
 
@@ -245,41 +292,15 @@ function showNotification(message, type = 'success') {
 const notificationStyle = document.createElement('style');
 notificationStyle.textContent = `
     @keyframes slideInRight {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
-    
     @keyframes slideOutRight {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(400px);
-            opacity: 0;
-        }
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(400px); opacity: 0; }
     }
 `;
 document.head.appendChild(notificationStyle);
-
-// ============================================
-// PARALLAX SCROLL EFFECT (SUBTLE)
-// ============================================
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    
-    if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.4}px)`;
-        hero.style.opacity = 1 - (scrolled / 800);
-    }
-});
 
 // ============================================
 // CURSOR FOLLOWER (DESKTOP ONLY)
@@ -321,8 +342,7 @@ if (window.innerWidth > 768) {
     
     animateCursor();
     
-    // Cursor hover effects
-    const interactiveElements = document.querySelectorAll('a, button, .project-card, .platform-card');
+    const interactiveElements = document.querySelectorAll('a, button, .project-card, .platform-card, .timeline-content');
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
             cursor.style.transform = 'scale(1.5)';
@@ -353,24 +373,9 @@ const imageObserver = new IntersectionObserver((entries) => {
 images.forEach(img => imageObserver.observe(img));
 
 // ============================================
-// PERFORMANCE MONITORING
-// ============================================
-window.addEventListener('load', () => {
-    const loadTime = window.performance.timing.domContentLoadedEventEnd - 
-                     window.performance.timing.navigationStart;
-    
-    console.log('%c🚀 Portfolio Loaded', 'font-size: 16px; color: #00D9FF; font-weight: bold;');
-    console.log(`%c⚡ Load Time: ${loadTime}ms`, 'font-size: 12px; color: #64FFDA;');
-    console.log('%c👨‍💻 Built by Kaushal Ladiya', 'font-size: 12px; color: #8892B0;');
-    console.log('%c📧 kaushalladiya@gmail.com', 'font-size: 12px; color: #8892B0;');
-    console.log('%c💼 Currently Available for Opportunities', 'font-size: 12px; color: #00D9FF;');
-});
-
-// ============================================
 // KEYBOARD NAVIGATION
 // ============================================
 document.addEventListener('keydown', (e) => {
-    // ESC key closes mobile menu
     if (e.key === 'Escape' && navMenu.classList.contains('active')) {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
@@ -388,7 +393,6 @@ emailElements.forEach(el => {
         navigator.clipboard.writeText(email).then(() => {
             showNotification('Email copied to clipboard!', 'success');
         }).catch(() => {
-            // Fallback: open mailto link
             window.location.href = el.href;
         });
     });

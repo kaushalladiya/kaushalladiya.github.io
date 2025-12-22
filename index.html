@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('portfolioTheme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
@@ -23,15 +29,15 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#journey" class="nav-link">Journey</a></li>
                 <li><a href="#coding" class="nav-link">Problem Solving</a></li>
                 <li><a href="#skills" class="nav-link">Tech Stack</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Hire Me</a></li>
+                <li><a href="#contact" class="nav-btn">Hire Me</a></li>
             </ul>
-            <!-- Theme Toggle Button -->
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+            <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-label="Toggle theme">
                 <i class="fas fa-sun" id="themeIcon"></i>
-            </button>
+            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -40,18 +46,16 @@
         </div>
     </nav>
 
-    <!-- Availability Badge -->
     <div class="availability-badge" id="availabilityBadge">
         <i class="fas fa-briefcase"></i>
         <span>Available for Opportunities</span>
     </div>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
                 <p class="hero-greeting">Hey there, I'm</p>
-                <h1 class="hero-title">KAUSHAL LADIYA</h1>
+                <h1 class="hero-title">Kaushal Ladiya</h1>
                 <h2 class="hero-subtitle">Full Stack Developer</h2>
                 <p class="hero-description">
                     I architect robust backend systems and craft intuitive user interfaces. 
@@ -83,6 +87,9 @@
                     <a href="https://auth.geeksforgeeks.org/user/kaushalladiya" target="_blank" aria-label="GeeksForGeeks" title="GeeksForGeeks Profile">
                         <i class="fas fa-laptop-code"></i>
                     </a>
+                    <a href="assets/resume/Kaushal_Ladiya_Resume.pdf" target="_blank" aria-label="Resume" title="Download Resume" class="resume-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </a>
                     <a href="mailto:kaushalladiya@gmail.com" aria-label="Email" title="Send Email">
                         <i class="fas fa-envelope"></i>
                     </a>
@@ -95,7 +102,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about section">
         <div class="container">
             <h2 class="section-title">About Me</h2>
@@ -107,7 +113,7 @@
                             architecting backend systems that handle complexity with elegance.
                         </p>
                         <p>
-                            Currently advancing my expertise through CDAC's intensive program in Bhopal, focusing on 
+                            Currently advancing my expertise through CDAC's intensive program in Pune, focusing on 
                             enterprise-level application development. My approach: write maintainable code, architect 
                             scalable solutions, and deliver results that matter.
                         </p>
@@ -142,7 +148,7 @@
                             </div>
                             <div class="highlight-content">
                                 <h3>CDAC Trained</h3>
-                                <p>Completing intensive full-stack program in Bhopal, mastering industry best practices</p>
+                                <p>Completing intensive full-stack program in Pune, mastering industry best practices</p>
                             </div>
                         </div>
                     </div>
@@ -151,7 +157,53 @@
         </div>
     </section>
 
-    <!-- Competitive Coding Section -->
+    <section id="journey" class="journey section">
+        <div class="container">
+            <h2 class="section-title">My Journey</h2>
+            <p class="section-subtitle">The path that led me to full-stack development</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024 - Present</span>
+                        <h3 class="timeline-title">PG Diploma in Advanced Computing</h3>
+                        <h4 class="timeline-subtitle">CDAC, Pune</h4>
+                        <p class="timeline-desc">
+                            Intensive training in full-stack development, mastering Java, .NET, React, and Database technologies. 
+                            Building enterprise-level projects and learning industry-standard software engineering practices.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020 - 2024</span>
+                        <h3 class="timeline-title">Bachelor of Technology</h3>
+                        <h4 class="timeline-subtitle">Computer Science & Engineering</h4>
+                        <p class="timeline-desc">
+                            Built strong foundations in Data Structures, Algorithms, and Object-Oriented Programming. 
+                            Participated in multiple hackathons and led technical college events.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2018 - 2020</span>
+                        <h3 class="timeline-title">Higher Secondary Education</h3>
+                        <h4 class="timeline-subtitle">Science & Mathematics</h4>
+                        <p class="timeline-desc">
+                            Developed analytical thinking and problem-solving skills. First introduction to programming logic and computer science fundamentals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="coding" class="coding section">
         <div class="container">
             <h2 class="section-title">Problem Solving Practice</h2>
@@ -223,7 +275,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="skills section">
         <div class="container">
             <h2 class="section-title">Technology Stack</h2>
@@ -242,6 +293,10 @@
                         <div class="skill-tag">
                             <i class="fab fa-java"></i>
                             <span>Java</span>
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fas fa-leaf"></i>
+                            <span>Spring Boot</span>
                         </div>
                         <div class="skill-tag">
                             <i class="fas fa-project-diagram"></i>
@@ -298,6 +353,14 @@
                             <span>VS Code</span>
                         </div>
                         <div class="skill-tag">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Visual Studio 2022</span>
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fas fa-leaf"></i>
+                            <span>Spring Tool Suite (STS)</span>
+                        </div>
+                        <div class="skill-tag">
                             <i class="fas fa-mobile-alt"></i>
                             <span>Responsive Design</span>
                         </div>
@@ -307,15 +370,21 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects section">
         <div class="container">
             <h2 class="section-title">Featured Work</h2>
             <p class="section-subtitle">Production-ready applications built with modern tech stacks</p>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="java">Java & Spring</button>
+                <button class="filter-btn" data-filter="dotnet">.NET Core</button>
+                <button class="filter-btn" data-filter="react">React</button>
+            </div>
+
             <div class="projects-grid">
-                <!-- Finance Tracker Project -->
-                <div class="project-card featured">
-                    <div class="project-badge">Live Project</div>
+                <div class="project-card featured" data-category="dotnet react">
+                    <div class="project-badge">Featured Project</div>
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-chart-line"></i>
@@ -343,19 +412,51 @@
                         <span class="tech-badge ui">Tailwind CSS</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/kaushalladiya/finance-tracker" target="_blank" class="project-link-btn">
+                        <a href="https://github.com/kaushalladiya/finance-tracker" target="_blank" class="project-link-btn" style="width: 100%; justify-content: center;">
                             <i class="fab fa-github"></i>
-                            <span>Review Architecture</span>
-                        </a>
-                        <a href="https://github.com/kaushalladiya/finance-tracker#readme" target="_blank" class="project-link-btn secondary">
-                            <i class="fas fa-book"></i>
-                            <span>Technical Docs</span>
+                            <span>View Project on GitHub</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Coming Soon Projects -->
-                <div class="project-card upcoming">
+                <div class="project-card featured" data-category="java react">
+                    <div class="project-badge">Featured Project</div>
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="project-title-group">
+                            <h3>AquaForge</h3>
+                            <p class="project-subtitle">Premium Water Delivery E-Commerce Platform</p>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Full-stack enterprise e-commerce platform for water delivery and custom brand labeling. 
+                        Built with Spring Boot 3 and React, featuring scalable microservice architecture, secure 
+                        RESTful APIs, and conversion-optimized UI/UX with strategic CTA psychology.
+                    </p>
+                    <div class="project-features">
+                        <span><i class="fas fa-check"></i> Spring Boot 3.4 Backend</span>
+                        <span><i class="fas fa-check"></i> JWT Authentication</span>
+                        <span><i class="fas fa-check"></i> MySQL Database with JPA</span>
+                        <span><i class="fas fa-check"></i> Custom Brand Labeling</span>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge java">Java 21</span>
+                        <span class="tech-badge spring">Spring Boot</span>
+                        <span class="tech-badge react">React 18</span>
+                        <span class="tech-badge db">MySQL</span>
+                        <span class="tech-badge ui">Tailwind CSS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kaushalladiya/AquaForge" target="_blank" class="project-link-btn" style="width: 100%; justify-content: center;">
+                            <i class="fab fa-github"></i>
+                            <span>View Project on GitHub</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card upcoming" data-category="java react">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-rocket"></i>
@@ -380,8 +481,8 @@
                         <span>Launching Soon</span>
                     </div>
                 </div>
-
-                <div class="project-card upcoming">
+                
+                <div class="project-card upcoming" data-category="dotnet">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-tasks"></i>
@@ -409,7 +510,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact section">
         <div class="container">
             <h2 class="section-title">Let's Work Together</h2>
@@ -445,24 +545,6 @@
                                 <p>linkedin.com/in/kaushalladiya</p>
                             </div>
                         </a>
-                        <a href="https://github.com/kaushalladiya" target="_blank" class="contact-method">
-                            <div class="method-icon">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>GitHub</h4>
-                                <p>github.com/kaushalladiya</p>
-                            </div>
-                        </a>
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Location</h4>
-                                <p>Bhopal, Madhya Pradesh, India</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <form class="contact-form" id="contactForm" action="https://formsubmit.co/kaushalladiya@gmail.com" method="POST">
@@ -474,6 +556,7 @@
                     <input type="hidden" name="_subject" value="New Opportunity from Portfolio!">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_next" value="https://kaushalladiya.github.io/?success=true">
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Your Name *</label>
@@ -484,17 +567,21 @@
                             <input type="email" id="email" name="email" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="company">Company / Organization</label>
-                        <input type="text" id="company" name="company">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="subject">Subject *</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
+
                     <div class="form-group">
                         <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <textarea id="message" name="message" rows="2" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">
                         <span>Send Message</span>
@@ -508,7 +595,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -540,5 +626,25 @@
     </footer>
 
     <script src="js/main.js"></script>
+    
+    <script>
+        const toggle = document.getElementById('themeToggle');
+        const icon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+        
+        if (toggle && icon) {
+            const currentTheme = html.getAttribute('data-theme') || 'dark';
+            icon.className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            
+            toggle.onclick = function() {
+                const current = html.getAttribute('data-theme');
+                const newTheme = current === 'dark' ? 'light' : 'dark';
+                
+                html.setAttribute('data-theme', newTheme);
+                icon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+                localStorage.setItem('portfolioTheme', newTheme);
+            };
+        }
+    </script>
 </body>
 </html>
